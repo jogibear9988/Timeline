@@ -1,0 +1,322 @@
+﻿<Window
+    x:Class="WpfTimelineExample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:timeline="clr-namespace:TimelineLibrary;assembly=TimelineLibrary"
+    xmlns:wheel="clr-namespace:ColorWheel.Controls;assembly=ColorWheel.Controls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="Window1"
+    FontFamily="Segoe UI"
+    FontSize="11"
+    Height="1000"
+    Activated="Window_Activated"
+    Width="1200">
+
+    <Grid
+        x:Name="LayoutRoot"
+        Background="White">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition
+                Width="*" />
+
+            <ColumnDefinition
+                Width="400" />
+
+        </Grid.ColumnDefinitions>
+
+        <TabControl
+            Grid.Column="0">
+
+            <TabItem
+                x:Name="tiTimeLine"
+                Header="TimeLine">
+
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    x:Name="grdTimeLine">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Grid.Row="0"
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+
+                        <TextBox
+                            Height="23"
+                            HorizontalAlignment="Left"
+                            Margin="5"
+                            Name="minDateTime"
+                            VerticalAlignment="Top"
+                            Text="{Binding Path=MinDateTime, ElementName=timeline}"
+                            Width="122"></TextBox>
+
+                        <Label
+                            Height="28"
+                            HorizontalAlignment="Left"
+                            Margin="5"
+                            Name="label1"
+                            VerticalAlignment="Top"
+                            Width="120">MinDateTime</Label>
+
+                        <TextBox
+                            Height="23"
+                            Margin="5"
+                            Name="maxDateTime"
+                            Text="{Binding Path=MaxDateTime, ElementName=timeline}"
+                            VerticalAlignment="Top"></TextBox>
+
+                        <Label
+                            Height="28"
+                            HorizontalAlignment="Left"
+                            Margin="5"
+                            Name="label2"
+                            VerticalAlignment="Top"
+                            Width="120">MaxDateTime</Label>
+
+                        <TextBox
+                            Height="23"
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Name="currentDateTime"
+                            VerticalAlignment="Top"
+                            Text="{Binding Path=CurrentDateTime, ElementName=timeline}"
+                            Width="129"></TextBox>
+
+                        <Label
+                            Height="28"
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Name="label3"
+                            VerticalAlignment="Top"
+                            Width="120">CurrentDateTime</Label>
+
+                        <Slider
+                            Width="200"
+                            Height="26"
+                            Margin="5"
+                            Name="slider1"
+                            VerticalAlignment="Top"
+                            Maximum="36500"
+                            ValueChanged="slider1_ValueChanged" />
+
+                        <Label
+                            Content="Selected"
+                            Height="28"
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Name="label4"
+                            VerticalAlignment="Top" />
+
+                        <Label
+                            Content="{Binding ElementName=timeline, Path=SelectedTimelineEvents.Count,NotifyOnSourceUpdated=True}"
+                            Height="25"
+                            Width="100"
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Name="selectedCount"
+                            VerticalAlignment="Top"
+                            Target="{Binding ElementName=timeline, Path=SelectedTimelineEvents}" />
+
+                    </StackPanel>
+
+
+                    <timeline:TimelineTray
+                        x:Name="timeline"
+                        Grid.Row="1"
+                        MinDateTime="1/1/1839"
+                        MaxDateTime="1/1/1930"
+                        CalendarType="gregorian"
+                        HorizontalAlignment="Stretch"
+                        CurrentDateTime="11/01/1855"
+                        TimelineReady="timeline_TimelineReady">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="*" />
+                            <RowDefinition
+                                Height="60" />
+                        </Grid.RowDefinitions>
+
+                        <timeline:TimelineBand
+                            Grid.Row="1"
+                            IsMainBand="True"
+                            ItemSourceType="years"
+                            TimelineWindowSize="20"
+                            MaxEventHeight="130" />
+
+                        <timeline:TimelineBand
+                            Grid.Row="2"
+                            HorizontalAlignment="Stretch"
+                            ItemSourceType="decades"
+                            TimelineWindowSize="16"
+                            MaxEventHeight="4" />
+
+                        <timeline:TimelineToolbox
+                            Height="22"
+                            Grid.Row="0">
+                        </timeline:TimelineToolbox>
+
+                    </timeline:TimelineTray>
+
+                    <Grid
+                        Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Content="Change Image"
+                            Grid.Column="1"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Name="button2"
+                            VerticalAlignment="Top"
+                            Width="82"
+                            Click="Button2Click"
+                            DataContext="{Binding ElementName=timeline, Path=SelectedTimelineEvents}" />
+
+                        <Button
+                            Content="ResetEvents"
+                            Grid.Column="2"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Name="button1"
+                            VerticalAlignment="Top"
+                            Width="82"
+                            Click="button1_Click"
+                            DataContext="{Binding ElementName=timeline, Path=SelectedTimelineEvents}" />
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                x:Name="tiOther"
+                Header="Another">
+                <Grid />
+            </TabItem>
+        </TabControl>
+
+        <Grid
+            Grid.Column="1">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition
+                    Height="Auto" />
+
+                <RowDefinition
+                    Height="Auto" />
+
+                <RowDefinition
+                    Height="Auto" />
+
+                <RowDefinition
+                    Height="Auto" />
+
+                <RowDefinition
+                    Height="*" />
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition
+                    Width="100">
+                </ColumnDefinition>
+
+                <ColumnDefinition
+                    Width="*">
+                </ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <wheel:ColorWheelControl
+                Grid.ColumnSpan="2"
+                ColorSelected="ColorWheelControl_ColorSelected"
+                Margin="5"
+                Palette="{Binding Palette, Mode=OneWay}"
+                Grid.Row="0"
+                Height="390"
+                Width="390">
+            </wheel:ColorWheelControl>
+
+            <wheel:BrightnessSaturationControl
+                Grid.ColumnSpan="2"
+                SelectColored="BrightnessSaturationControl_SelectColored"
+                Margin="5"
+                Foreground="Black"
+                Palette="{Binding Palette, Mode=OneWay}"
+                Grid.Row="1"
+                Height="300"
+                Width="390">
+            </wheel:BrightnessSaturationControl>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="2"
+                VerticalAlignment="Center"
+                Margin="3">Selected</TextBlock>
+
+            <ComboBox
+                Grid.Row="2"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Margin="3"
+                HorizontalAlignment="Stretch"
+                SelectionChanged="selectedColor_SelectionChanged"
+                ItemsSource="{Binding ColorNameList, Mode=OneWay}"
+                SelectedValue="{Binding SelectedColorName, Mode=TwoWay}"
+                x:Name="selectedColor">
+
+            </ComboBox>
+
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Margin="3">Effect</TextBlock>
+
+            <ComboBox
+                Grid.Row="3"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Stretch"
+                Margin="3"
+                SelectedIndex="{Binding SelectedColorEffect, Mode=TwoWay}"
+                x:Name="selectedColorEffect">
+
+                <sys:String>N/A</sys:String>
+                <sys:String>3D</sys:String>
+                <sys:String>3D-InvertLuminosity</sys:String>
+                <sys:String>Radial</sys:String>
+                <sys:String>Radial-InvertLuminosity</sys:String>
+                <sys:String>Glass</sys:String>
+                <sys:String>Glass-InvertLuminosity</sys:String>
+                <sys:String>Tube</sys:String>
+                <sys:String>Tube-InvertLuminosity</sys:String>
+
+            </ComboBox>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
