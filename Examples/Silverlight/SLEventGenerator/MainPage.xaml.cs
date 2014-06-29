@@ -79,7 +79,7 @@ namespace SLEventGenerator
                 EventTLT.MaxDateTime = maxDate;
 
                 EventTLB.TimelineWindowSize = 2;
-                EventTLB.ItemSourceType = "months";
+                EventTLB.ItemSourceType = TimelineCalendarType.Months;
 
                 if (totalDays > 550)
                 {
@@ -89,7 +89,7 @@ namespace SLEventGenerator
                     EventScaleTLB.TimelineWindowSize = (int) Math.Min(Math.Max(
                         Math.Ceiling(totalDays / 365), 2), 6);
 
-                    EventScaleTLB.ItemSourceType = "years";
+                    EventScaleTLB.ItemSourceType = TimelineCalendarType.Years;
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace SLEventGenerator
                     // not that many days so display months
                     //
                     EventScaleTLB.TimelineWindowSize = 12;
-                    EventScaleTLB.ItemSourceType = "months";
+                    EventScaleTLB.ItemSourceType = TimelineCalendarType.Months;
                 }
             }
             else
@@ -109,10 +109,10 @@ namespace SLEventGenerator
                 EventTLT.MaxDateTime = DateTime.Now.AddMonths(1);
 
                 EventTLB.TimelineWindowSize = 2;
-                EventTLB.ItemSourceType = "months";
+                EventTLB.ItemSourceType = TimelineCalendarType.Months;
 
                 EventScaleTLB.TimelineWindowSize = 12;
-                EventScaleTLB.ItemSourceType = "months";
+                EventScaleTLB.ItemSourceType = TimelineCalendarType.Months;
             }
 
             //

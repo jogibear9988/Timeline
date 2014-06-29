@@ -794,8 +794,8 @@ namespace TimelineLibrary
         /// 
         public void AddTimelineBand(
             int                                         height,
-            bool                                        isMain, 
-            string                                      srcType, 
+            bool                                        isMain,
+            TimelineCalendarType                        srcType, 
             int                                         columnsCount
         )
         {
@@ -832,8 +832,8 @@ namespace TimelineLibrary
 
         public void AddTimelineBand(
             int                                         height,
-            bool                                        isMain, 
-            string                                      srcType, 
+            bool                                        isMain,
+            TimelineCalendarType                        srcType, 
             int                                         columnsCount, 
             int                                         eventSize
         )

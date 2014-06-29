@@ -161,7 +161,7 @@ namespace Timeline
         public void AddTimelineBand(
             int                                         height,
             bool                                        isMain, 
-            string                                      srcType, 
+            TimelineCalendarType                        srcType, 
             int                                         columnsCount,
             int                                         maxEventHeight
         )

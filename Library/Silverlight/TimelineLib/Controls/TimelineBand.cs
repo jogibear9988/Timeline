@@ -107,9 +107,8 @@ namespace TimelineLibrary
 
         // specifies if all columns already initialized
         private bool                                    m_calcInitialized;
-        
-        private string                                  m_sourceType = TL_TYPE_YEARS;
-        private TimelineCalendarType                    m_timelineType;
+
+        private TimelineCalendarType                    m_sourceType = TimelineCalendarType.Years;
         private string                                  m_calendarType;
 
         private ObservableCollection<TimelineDisplayEvent>
@@ -916,7 +915,7 @@ namespace TimelineLibrary
             set;
         }
 
-        public string ItemSourceType
+        public TimelineCalendarType ItemSourceType
         {
             get
             {
@@ -925,60 +924,7 @@ namespace TimelineLibrary
 
             set
             {
-                string                                  itemsType;
-
-                itemsType = value.ToLower();
                 m_sourceType = value;
-
-                switch (itemsType)
-                {
-                    case TL_TYPE_DECADES:
-                        m_timelineType = TimelineCalendarType.Decades;
-                        break;
-
-                    case TL_TYPE_YEARS:
-                        m_timelineType = TimelineCalendarType.Years;
-                        break;
-
-                    case TL_TYPE_MONTHS:
-                        m_timelineType = TimelineCalendarType.Months;
-                        break;
-
-                    case TL_TYPE_DAYS:
-                        m_timelineType = TimelineCalendarType.Days;
-                        break;
-
-                    case TL_TYPE_HOURS:
-                        m_timelineType = TimelineCalendarType.Hours;
-                        break;
-
-                    case TL_TYPE_MINUTES10:
-                        m_timelineType = TimelineCalendarType.Minutes10;
-                        break;
-
-                    case TL_TYPE_MINUTES:
-                        m_timelineType = TimelineCalendarType.Minutes;
-                        break;
-
-                    case TL_TYPE_SECONDS:
-                        m_timelineType = TimelineCalendarType.Seconds;
-                        break;
-
-                    case TL_TYPE_MILLISECONDS100:
-                        m_timelineType = TimelineCalendarType.Milliseconds100;
-                        break;
-
-                    case TL_TYPE_MILLISECONDS10:
-                        m_timelineType = TimelineCalendarType.Milliseconds10;
-                        break;
-
-                    case TL_TYPE_MILLISECONDS:
-                        m_timelineType = TimelineCalendarType.Milliseconds;
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
             }
         }
 
@@ -1236,7 +1182,7 @@ namespace TimelineLibrary
         {
             Debug.Assert(this.TimelineTray != null);
 
-            ItemsSource = new TimelineCalendar(calendarType, m_timelineType,
+            ItemsSource = new TimelineCalendar(calendarType, m_sourceType,
                 minDateTime, maxDateTime);
 
             ItemsSource.TimeFormat24 = TimeFormat24;
