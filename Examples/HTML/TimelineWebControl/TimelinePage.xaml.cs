@@ -35,7 +35,7 @@ using TimelineLibrary;
 namespace Timeline
 {
     [ScriptableType]
-    public partial class TimelinePage : UserControl
+    public partial class TimelinePage
     {
         private string                                  m_urls;
 
