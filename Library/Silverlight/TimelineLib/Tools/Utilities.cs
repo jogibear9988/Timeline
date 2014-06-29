@@ -27,9 +27,11 @@
 
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Data;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Threading;
 using System.Windows.Media.Animation;
 using System.Collections.Generic;
@@ -109,6 +111,31 @@ namespace TimelineLibrary
                     message.Length == 0 ? sender.ToString() : message));
             }
 #endif
+        }
+
+        public static Color ColorFromString(string namedColor)
+        {
+            Type colorType;
+            object o = null;
+
+            var color = Colors.Gray;
+
+            if (!String.IsNullOrEmpty(namedColor))
+            {
+                colorType = typeof(System.Windows.Media.Colors);
+
+                if (colorType.GetProperty(namedColor) != null)
+                {
+                    o = colorType.InvokeMember(namedColor, BindingFlags.GetProperty, null, null, null);
+                    if (o != null)
+                    {
+                        color = (Color)o;
+                    }
+                }
+
+            }
+
+            return color;
         }
     }
 

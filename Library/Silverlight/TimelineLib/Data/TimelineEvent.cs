@@ -33,6 +33,7 @@ using System.Linq;
 using System.Windows;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Media;
 
 namespace TimelineLibrary
 {
@@ -58,7 +59,7 @@ namespace TimelineLibrary
         private string                                  m_link;
         private bool                                    m_isDuration;
         private string                                  m_teaserImage;
-        private string                                  m_eventColor;
+        private Brush                                   m_eventBrush = new SolidColorBrush(Colors.Gray);
         private object                                  m_tag;
 		private bool									m_selected;
         private Dictionary<string, EventTag>            m_eventTags;
@@ -194,16 +195,16 @@ namespace TimelineLibrary
             }
         }
 
-        public string EventColor
+        public Brush EventBrush
         {
             get
             {
-                return m_eventColor;
+                return m_eventBrush;
             }
             set
             {
-                m_eventColor = value;
-                FirePropertyChanged("EventColor");
+                m_eventBrush = value;
+                FirePropertyChanged("EventBrush");
             }
         }
 

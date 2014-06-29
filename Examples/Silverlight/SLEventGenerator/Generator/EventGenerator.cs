@@ -1,5 +1,6 @@
 ﻿// EventGenerator from SLEventGenerator
 using System.Collections.Generic;
+using System.Windows.Media;
 using TimelineLibrary;
 using System;
 
@@ -55,11 +56,11 @@ public class EventGenerator
 
             if (i % 3 == 0)
             {
-                e.EventColor = "Red";
+                e.EventBrush = new SolidColorBrush(Colors.Red);
             }
             else if (i % 2 == 0)
             {
-                e.EventColor = "Blue"; 
+                e.EventBrush = new SolidColorBrush(Colors.Blue);
             }
 
             e.Title = String.Format("{0}", m_lastDate.ToShortDateString());

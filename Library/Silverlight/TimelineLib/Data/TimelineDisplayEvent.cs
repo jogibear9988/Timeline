@@ -50,7 +50,6 @@ namespace TimelineLibrary
         public static int                               TeaserSize;
     	public static string                            SelectedEventImageUrl;
 
-        private Brush                                   m_rectBrush;
         private TimelineEvent                           m_timelineEvent;
         private bool                                    m_selected;
         
@@ -216,54 +215,11 @@ namespace TimelineLibrary
         {
             get
             {
-                Type                                    colorType;
-                object                                  o = null;
-
-                if (m_rectBrush == null)
-                {
-#if !SILVERLIGHT
-                    TemplateColor tc = null;
-                    var cm = ColorManager.Instance;
-
-                    if (ColorManager.Templates.ContainsKey(EVENT_LINE_RESOURCE_NAME))
-                    {
-                        tc          = ColorManager.Templates[EVENT_LINE_RESOURCE_NAME];
-                        m_rectBrush = ColorManager.GetAt(EVENT_LINE_RESOURCE_NAME) as Brush;
-                    }
-                    else
-                    {
-                        m_rectBrush = new SolidColorBrush(Colors.Gray);
-                    }
-#else
-                    m_rectBrush = new SolidColorBrush(Colors.Gray);
-#endif
-                    if (!String.IsNullOrEmpty(Event.EventColor))
-                    {
-                        colorType = typeof(System.Windows.Media.Colors); 
-
-                        if (colorType.GetProperty(Event.EventColor) != null)
-                        {
-                            o = colorType.InvokeMember(Event.EventColor, BindingFlags.GetProperty, null, null, null);
-                            if (o != null)
-                            {
-                                m_rectBrush = new SolidColorBrush((Color) o);
-                            }
-                        }
-
-#if !SILVERLIGHT
-                        if (tc != null)
-                        {
-                            m_rectBrush = ColorManager.Modify((Color) o, tc.Effect) as Brush;
-                        }
-#endif
-                    }
-                }
-
-                return m_rectBrush;
+                return Event.EventBrush;
             }
             set
             {
-                m_rectBrush = value;
+                Event.EventBrush = value;
             }
         }
 

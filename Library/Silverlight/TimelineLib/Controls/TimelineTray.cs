@@ -990,7 +990,7 @@ namespace TimelineLibrary
 
             e.Id = GetAttribute(row.Attribute("id"));
             e.Title = GetAttribute(row.Attribute("title"));
-            e.EventColor = GetAttribute(row.Attribute("color"));
+            e.EventBrush = new SolidColorBrush(Utilities.ColorFromString(GetAttribute(row.Attribute("color"))));
             e.Link = GetAttribute(row.Attribute("link"));
             e.EventImage = GetAttribute(row.Attribute("image"));
             e.TeaserEventImage = GetAttribute(row.Attribute("teaserimage"));
