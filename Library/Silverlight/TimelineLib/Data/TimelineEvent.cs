@@ -43,6 +43,8 @@ namespace TimelineLibrary
     /// 
     public class TimelineEvent: INotifyPropertyChanged, IComparer<TimelineEvent>
     {
+        private static Brush                            m_grayBrush = new SolidColorBrush(Colors.Gray);
+
         #region Private fields
 
         private int                                     m_row = -1;
@@ -59,7 +61,7 @@ namespace TimelineLibrary
         private string                                  m_link;
         private bool                                    m_isDuration;
         private string                                  m_teaserImage;
-        private Brush                                   m_eventBrush = new SolidColorBrush(Colors.Gray);
+        private Brush                                   m_eventBrush = m_grayBrush;
         private object                                  m_tag;
 		private bool									m_selected;
         private Dictionary<string, EventTag>            m_eventTags;

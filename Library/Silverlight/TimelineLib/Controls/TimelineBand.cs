@@ -66,23 +66,6 @@ namespace TimelineLibrary
 
         #region Private Fields and Constants
 
-        #region Types of Scale
-
-        private const string                            TL_TYPE_DECADES = "decades";
-        private const string                            TL_TYPE_YEARS = "years";
-        private const string                            TL_TYPE_MONTHS = "months";
-        private const string                            TL_TYPE_DAYS = "days";
-        private const string                            TL_TYPE_HOURS = "hours";
-        private const string                            TL_TYPE_MINUTES = "minutes";
-        private const string                            TL_TYPE_MINUTES10 = "minutes10";
-        private const string                            TL_TYPE_SECONDS = "seconds";
-        private const string                            TL_TYPE_MILLISECONDS100 = "milliseconds100";
-        private const string                            TL_TYPE_MILLISECONDS10 = "milliseconds10";
-        private const string                            TL_TYPE_MILLISECONDS = "milliseconds";
-
-
-        #endregion
-
         #region Control Part constants
 
         private const string                            TP_CANVAS_PART = "CanvasPart";
