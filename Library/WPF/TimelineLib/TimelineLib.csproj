@@ -60,9 +60,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ColorWheel.Core, Version=1.5.10.51312, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ColorWheel.Core, Version=1.7.14.51712, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\ColorWheel.Core.1.5.10.51312\lib\net40\ColorWheel.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\ColorWheel.Core.1.7.14.51712\lib\net40\ColorWheel.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

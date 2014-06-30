@@ -71,9 +71,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ColorWheel.Core, Version=1.5.10.51312, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ColorWheel.Core, Version=1.5.13.51512, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\ColorWheel.Core.1.5.10.51312\lib\sl5\ColorWheel.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\ColorWheel.Core.1.7.14.51712\lib\sl5\ColorWheel.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
