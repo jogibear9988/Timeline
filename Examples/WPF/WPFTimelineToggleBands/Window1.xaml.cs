@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -72,8 +73,10 @@ namespace WPFTimelineToggleBands
 			{
 				_grdTimeLine.Children.RemoveAt(_grdTimeLine.Children.Count - 1);
 			}
-			//timeline.TimelineReady += (x, y) => timeline.ResetEvents(Properties.Resources.Monet);
-			timeline.Loaded += (x, y) => timeline.ResetEvents(Properties.Resources.Monet);
+            //timeline.TimelineReady += (x, y) => timeline.ResetEvents(Properties.Resources.Monet);
+
+            var monetXml = this.GetResourceTextFile("Monet.xml");
+			timeline.Loaded += (x, y) => timeline.ResetEvents(monetXml);
 
 			_grdTimeLine.Children.Add(timeline);
 		}
@@ -84,7 +87,7 @@ namespace WPFTimelineToggleBands
 			var band = CreateBand();
 			band.IsMainBand = main;
 			main = false;
-			band.ItemSourceType = itemSourceType;
+			//band.ItemSourceType = itemSourceType;
 			Grid.SetRow(band, bandNr++);
 			if (band.IsMainBand)
 			{
@@ -163,5 +166,25 @@ namespace WPFTimelineToggleBands
 			}
 		}
 
-	}
+        /// <summary>
+        /// Gets the resource text file.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <returns></returns>
+        private string GetResourceTextFile(string filename)
+        {
+            string result = string.Empty;
+
+            using (Stream stream = this.GetType().Assembly.
+                       GetManifestResourceStream("WpfTimelineToggleBands." + filename))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
+        }
+
+    }
 }

@@ -11,6 +11,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.IO;
 
     public partial class Window1: 
         Window, 
@@ -193,7 +194,9 @@
         )
         {
             timeline.ClearEvents();
-            timeline.ResetEvents(Resource.Monet);
+
+            var monetXml = this.GetResourceTextFile("Monet.xml");
+            timeline.ResetEvents(monetXml);
         }
 
         private void timeline_TimelineReady(
@@ -201,7 +204,8 @@
             EventArgs                                   e
         )
         {
-            timeline.ResetEvents(Resource.Monet);
+            var monetXml = this.GetResourceTextFile("Monet.xml");
+            timeline.ResetEvents(monetXml);
             CollectionChangedEventManager.AddListener(timeline.SelectedTimelineEvents, this);
         }
 
@@ -277,6 +281,26 @@
                 m_selectedColor = idx;
                 UpdateSelectedColor();
             }
+        }
+
+        /// <summary>
+        /// Gets the resource text file.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <returns></returns>
+        private string GetResourceTextFile(string filename)
+        {
+            string result = string.Empty;            
+
+            using (Stream stream = this.GetType().Assembly.
+                       GetManifestResourceStream("WpfTimelineExample." + filename))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
         }
     }
 }

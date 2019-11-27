@@ -1,147 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D2188E92-117C-4E93-A759-5CC251DC226D}</ProjectGuid>
+    <ProjectGuid>{37FA3298-A08A-45A3-BEE4-151BF3A2DE90}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimelineLibrary</RootNamespace>
     <AssemblyName>TimelineLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ColorWheel.Core, Version=1.7.14.51712, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\ColorWheel.Core.1.7.14.51712\lib\net40\ColorWheel.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationProvider">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="EventDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Constants.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\NavigationButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ToolboxButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\Shared\AsmInfo.cs">
       <Link>Properties\AsmInfo.cs</Link>
     </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Compatibility.cs">
-      <Link>Compatibility.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\DataControlNotifier.cs">
-      <Link>Controls\DataControlNotifier.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\ITimelineToolbox.cs">
-      <Link>Controls\ITimelineToolbox.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\TimelineBand.cs">
-      <Link>Controls\TimelineBand.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\TimelineToolbox.cs">
-      <Link>Controls\TimelineToolbox.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\TimelineTray.cs">
-      <Link>Controls\TimelineTray.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Controls\TimelineUrls.cs">
-      <Link>Controls\TimelineUrls.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Data\DateTimeConverter.cs">
-      <Link>Data\DateTimeConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Data\TimelineBuilder.cs">
-      <Link>Data\TimelineBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Data\TimelineCalendar.cs">
-      <Link>Data\TimelineCalendar.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Data\TimelineDisplayEvent.cs">
-      <Link>Data\TimelineDisplayEvent.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Data\TimelineEvent.cs">
-      <Link>Data\TimelineEvent.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Resource.Designer.cs">
-      <Link>Resource.Designer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Tools\InertialScroll.cs">
-      <Link>Tools\InertialScroll.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Tools\TooltipServiceEx.cs">
-      <Link>Tools\TooltipServiceEx.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\TimelineLib\Tools\Utilities.cs">
-      <Link>Tools\Utilities.cs</Link>
-    </Compile>
+    <Compile Include="Compatibility.cs" />
+    <Compile Include="Controls\DataControlNotifier.cs" />
+    <Compile Include="Controls\ITimelineToolbox.cs" />
+    <Compile Include="Controls\TimelineBand.cs" />
+    <Compile Include="Controls\TimelineToolbox.cs" />
+    <Compile Include="Controls\TimelineTray.cs" />
+    <Compile Include="Controls\TimelineUrls.cs" />
+    <Compile Include="Data\DateTimeConverter.cs" />
+    <Compile Include="Data\TimelineBuilder.cs" />
+    <Compile Include="Data\TimelineCalendar.cs" />
+    <Compile Include="Data\TimelineDisplayEvent.cs" />
+    <Compile Include="Data\TimelineEvent.cs" />
     <Compile Include="EventDetailsWindow.xaml.cs">
       <DependentUpon>EventDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -158,9 +105,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="..\..\Silverlight\TimelineLib\Resource.resx">
-      <Link>Resource.resx</Link>
-    </EmbeddedResource>
+    <Compile Include="Tools\InertialScroll.cs" />
+    <Compile Include="Tools\TooltipServiceEx.cs" />
+    <Compile Include="Tools\Utilities.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -171,73 +118,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="EventDetailsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Constants.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\NavigationButtons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\ToolboxButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dialogs\" />

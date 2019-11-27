@@ -41,6 +41,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using TimelineLibrary;
 using TimelineEx;
+using System.IO;
 
 namespace WpfTimelineExExample
 {
@@ -74,7 +75,8 @@ namespace WpfTimelineExExample
         {
             if (m_init)
             {
-                timeline.ResetEvents(Resource.Monet);
+                var monetXml = this.GetResourceTextFile("Monet.xml");
+                timeline.ResetEvents(monetXml);
                 m_init = false;
             }
         }
@@ -292,6 +294,26 @@ namespace WpfTimelineExExample
             edit.AddNew = true;
 
             edit.Show();
+        }
+
+        /// <summary>
+        /// Gets the resource text file.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <returns></returns>
+        private string GetResourceTextFile(string filename)
+        {
+            string result = string.Empty;
+
+            using (Stream stream = this.GetType().Assembly.
+                       GetManifestResourceStream("WpfTimelineExExample." + filename))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
         }
     }
 }
